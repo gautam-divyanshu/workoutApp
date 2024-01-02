@@ -1,15 +1,20 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import router from "./routes/workout.js";
+import workoutRoute from "./routes/workout.js";
+import userRoute from "./routes/user.js";
 
 const app = express();
 const port = 4000;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(router);
+app.use(workoutRoute);
+app.use(userRoute);
 
 //connecting to server
 mongoose
